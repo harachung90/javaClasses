@@ -1,10 +1,21 @@
 public class PezDispenser {
     public static final int MAX_PEZ = 12;
     final String characterName;
+    private int pezCount;
 
     public PezDispenser(String characterName) {
         this.characterName = characterName;
+        pezCount = 0;
     }
+
+    public void fill() {
+        pezCount = MAX_PEZ;
+    }
+
+    public boolean isEmpty() {
+        return pezCount == 0;
+    }
+
     public String getCharacterName () {
         return characterName;
     }
@@ -25,5 +36,17 @@ public class PezDispenser {
 /*        String before = dispenser.swapHead("Darth Vader");
         System.out.printf("It was %s, but Hara switched it to %s %n",
                 before, dispenser.getCharacterName());*/
+
+        if (dispenser.isEmpty()) {
+            System.out.println("Dispense is empty!");
+        }
+
+        System.out.println("Filling the dispense with delicious PEZ...");
+        dispenser.fill();
+
+        if (!dispenser.isEmpty()) {
+            System.out.println("Dispense is full.");
+        }
+
     }
 }
