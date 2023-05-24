@@ -9,7 +9,7 @@ public class PezDispenser {
     }
 
     public void fill() {
-        pezCount = MAX_PEZ;
+        fill(MAX_PEZ);
     }
 
     public boolean isEmpty() {
@@ -18,6 +18,19 @@ public class PezDispenser {
 
     public String getCharacterName () {
         return characterName;
+    }
+
+    public boolean dispense() {
+        boolean wasDispensed = false;
+        if (!isEmpty()) {
+            pezCount--;
+            wasDispensed = true;
+        }
+        return wasDispensed;
+    }
+
+    public void fill(int pezAmount) {
+        pezCount += pezAmount;
     }
 
 /*    public String swapHead(String characterName) {
@@ -46,7 +59,17 @@ public class PezDispenser {
 
         if (!dispenser.isEmpty()) {
             System.out.println("Dispense is full.");
+        } while (dispenser.dispense()) {
+            System.out.println("Chomp!");
+        }
+        if (dispenser.isEmpty()) {
+            System.out.println("Ate all the PEZ!");
         }
 
+        dispenser.fill(4);
+        dispenser.fill(2);
+        while (dispenser.dispense()) {
+            System.out.println("Chomp!");
+        }
     }
 }
